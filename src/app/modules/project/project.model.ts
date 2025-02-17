@@ -32,6 +32,7 @@ const projectSchema = new Schema<TProject>(
     },
     image: {
       type: String,
+      required: [true, "Image URL is required"],
     },
   },
   { timestamps: true }

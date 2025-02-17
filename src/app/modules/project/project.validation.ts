@@ -8,7 +8,7 @@ export const createProjectValidation = z.object({
         liveUrl: z.string().url({ message: "Live URL must be a valid URL" }),
         clientSideUrl: z.string().url({ message: "Client-side URL must be a valid URL" }).optional(),
         serverSideUrl: z.string().url({ message: "Server-side URL must be a valid URL" }).optional(),
-        image: z.string(),
+        image: z.string().url({ message: "Image URL must be a valid URL" }),
         createdAt: z.date().optional(),
         updatedAt: z.date().optional(),
     })
