@@ -9,7 +9,7 @@ export type TProject = {
     liveUrl: string;
     clientSideUrl?: string;
     serverSideUrl?: string;
-    image: string;
+    imageUrl: string;
     createdAt?: Date;
     updatedAt?: Date;
   };

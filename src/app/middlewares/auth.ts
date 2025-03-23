@@ -10,7 +10,7 @@ import { TUserRole } from '../modules/user/user.interface';
 import { JwtPayload } from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
 
-const auth = (...requiredRoles: TUserRole[]) => {
+const Auth = (...requiredRoles: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const decoded = tokenDecoder(req);
     const { role, userId } = decoded;
@@ -31,4 +31,4 @@ const auth = (...requiredRoles: TUserRole[]) => {
   });
 };
 
-export default auth;
+export default Auth;

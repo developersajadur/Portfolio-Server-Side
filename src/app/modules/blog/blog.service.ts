@@ -41,6 +41,14 @@ const getSingleBlogBySlug = async (slug: string) => {
   return blog;
 };
 
+const getSingleBlogById = async (blogId: string) => {
+  const blog = await Blog.findById(blogId);
+  if (!blog) {
+    throw new AppError(status.NOT_FOUND, 'Blog not found!');
+  }
+  return blog;
+};
+
 const deleteSingleBlogById = async (blogId: string) => {
   const blog = await Blog.findByIdAndDelete(blogId);
   if (!blog) {
@@ -79,6 +87,7 @@ export const blogService = {
   createBlogIntoDb,
   getAllBlogs,
   getSingleBlogBySlug,
+  getSingleBlogById,
   deleteSingleBlogById,
   updateSingleBlogById,
 };

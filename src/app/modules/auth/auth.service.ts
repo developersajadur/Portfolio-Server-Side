@@ -9,6 +9,7 @@ import config from '../../config';
 
 export type TJwtPayload = {
   userId: string;
+  userName: string;
   email: string;
   role: string;
 };
@@ -19,8 +20,6 @@ const loginUser = async (payload: TLoginUser): Promise<{ token: string }> => {
   );
   if (!user) {
     throw new AppError(status.NOT_FOUND, 'User Not Found');
-  } else if (user?.isBlocked) {
-    throw new AppError(status.FORBIDDEN, 'User Is Blocked');
   }
   const passwordMatch = await bcrypt.compare(payload?.password, user?.password);
   if (!passwordMatch) {
@@ -29,6 +28,7 @@ const loginUser = async (payload: TLoginUser): Promise<{ token: string }> => {
 
   const jwtPayload = {
     userId: user?._id.toString(),
+    userName: user?.name,
     email: user?.email,
     role: user?.role,
   };

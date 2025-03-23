@@ -11,10 +11,10 @@ const createUserValidation = z.object({
     password: z
       .string()
       .min(6, { message: 'Password must be at least 6 characters long' }),
-    role: z
+      role: z
       .enum(['admin', 'user'], { message: 'Invalid role' })
       .default('user'),
-    isBlocked: z.boolean().default(false), // Make carts optional
+      isBlocked: z.boolean().default(false), 
     createdAt: z.date().optional(),
     updatedAt: z.date().optional(),
   }),

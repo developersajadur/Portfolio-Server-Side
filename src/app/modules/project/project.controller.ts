@@ -25,7 +25,7 @@ const getAllProjects = catchAsync(async (req, res) => {
 })
 
 const getSingleProjectById = catchAsync(async (req, res) => {
-    const project = await projectService.getSingleProjectById(req?.params?.id);
+    const project = await projectService.getSingleProjectById(req?.params?.projectId);
     sendResponse(res, {
         statusCode: status.OK,
         success: true,
@@ -36,7 +36,7 @@ const getSingleProjectById = catchAsync(async (req, res) => {
 
 
 const deleteSingleProjectById = catchAsync(async (req, res) => {
-    await projectService.deleteSingleProjectById(req?.params?.id);
+    await projectService.deleteSingleProjectById(req?.params?.projectId);
     sendResponse(res, {
         statusCode: status.NO_CONTENT,
         success: true,
@@ -46,7 +46,8 @@ const deleteSingleProjectById = catchAsync(async (req, res) => {
 })
 
 const updateSingleProjectById = catchAsync(async (req, res) => {
-    const updatedProject = await projectService.updateSingleProjectById(req?.params?.id, req?.body);
+    console.log(req.body);
+    const updatedProject = await projectService.updateSingleProjectById(req?.params?.projectId, req?.body);
     sendResponse(res, {
         statusCode: status.OK,
         success: true,

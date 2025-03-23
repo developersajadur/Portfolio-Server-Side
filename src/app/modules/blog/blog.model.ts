@@ -16,7 +16,7 @@ const blogSchema = new Schema<TBlog>(
       required: [true, "Blog description is required"],
       trim: true,
     },
-    image: {
+    imageUrl: {
       type: String,
       required: [true, "Blog Image is required"],
     },

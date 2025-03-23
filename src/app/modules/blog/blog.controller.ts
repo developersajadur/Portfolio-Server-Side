@@ -24,8 +24,18 @@ const getAllBlogs = catchAsync(async (req, res) => {
     })
 })
 
+const getSingleBlogById = catchAsync(async (req, res) => {
+    const blog = await blogService.getSingleBlogById(req?.params?.blogId);
+    sendResponse(res, {
+        statusCode: status.OK,
+        success: true,
+        message: "Blog retrieved successfully",
+        data: blog,
+    })
+})
+
 const getSingleBlogBySlug = catchAsync(async (req, res) => {
-    const blog = await blogService.getSingleBlogBySlug(req?.params?.id);
+    const blog = await blogService.getSingleBlogBySlug(req?.params?.blogId);
     sendResponse(res, {
         statusCode: status.OK,
         success: true,
@@ -35,7 +45,7 @@ const getSingleBlogBySlug = catchAsync(async (req, res) => {
 })
 
 const deleteSingleBlogById = catchAsync(async (req, res) => {
-    await blogService.deleteSingleBlogById(req?.params?.id);
+    await blogService.deleteSingleBlogById(req?.params?.blogId);
     sendResponse(res, {
         statusCode: status.NO_CONTENT,
         success: true,
@@ -45,7 +55,7 @@ const deleteSingleBlogById = catchAsync(async (req, res) => {
 })
 
 const updateSingleBlogById = catchAsync(async (req, res) => {
-    const updatedBlog = await blogService.updateSingleBlogById(req?.params?.id, req?.body);
+    const updatedBlog = await blogService.updateSingleBlogById(req?.params?.blogId, req?.body);
     sendResponse(res, {
         statusCode: status.OK,
         success: true,
@@ -58,6 +68,7 @@ export const blogController = {
     createBlogIntoDb,
     getAllBlogs,
     getSingleBlogBySlug,
+    getSingleBlogById,
     deleteSingleBlogById,
     updateSingleBlogById
 }

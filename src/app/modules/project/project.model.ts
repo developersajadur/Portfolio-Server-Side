@@ -30,7 +30,7 @@ const projectSchema = new Schema<TProject>(
     serverSideUrl: {
       type: String,
     },
-    image: {
+    imageUrl: {
       type: String,
       required: [true, "Image URL is required"],
     },

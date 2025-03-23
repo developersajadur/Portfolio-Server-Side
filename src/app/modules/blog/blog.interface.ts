@@ -5,7 +5,7 @@ export type TBlog = {
     slug?: string;
     name: string;
     description: string;
-    image: string;
+    imageUrl: string;
     createdAt?: Date;
     updatedAt?: Date;
   };

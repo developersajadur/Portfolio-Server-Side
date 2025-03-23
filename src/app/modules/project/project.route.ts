@@ -2,14 +2,14 @@ import { Router } from 'express';
 import { projectValidationSchema } from './project.validation';
 import validateRequest from '../../middlewares/validateRequest';
 import { projectController } from './project.controller';
-import auth from '../../middlewares/auth';
+import Auth from '../../middlewares/auth';
 import { USER_ROLE } from '../user/user.constant';
 
 const router = Router();
 
 router.post(
   '/create-project',
-  auth(USER_ROLE.admin),
+  Auth(USER_ROLE.admin),
   validateRequest(projectValidationSchema.createProjectValidation),
   projectController.createProjectIntoDb,
 );
@@ -18,19 +18,19 @@ router.get('/', projectController.getAllProjects);
 
 router.get(
   '/:projectId',
-  auth(USER_ROLE.admin),
-  projectController.createProjectIntoDb,
+  // auth(USER_ROLE.admin),
+  projectController.getSingleProjectById,
 );
 
 router.delete(
-  'delete-project/:projectId',
-  auth(USER_ROLE.admin),
+  '/delete-project/:projectId',
+  Auth(USER_ROLE.admin),
   projectController.deleteSingleProjectById,
 );
 
-router.delete(
-  'update-project/:projectId',
-  auth(USER_ROLE.admin),
+router.put(
+  '/update-project/:projectId',
+  Auth(USER_ROLE.admin),
   projectController.updateSingleProjectById,
 );
 
