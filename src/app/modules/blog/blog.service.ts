@@ -34,7 +34,7 @@ const getAllBlogs = async (query: Record<string, unknown>) => {
 };
 
 const getSingleBlogBySlug = async (slug: string) => {
-  const blog = await Blog.findOne({slug});
+  const blog = await Blog.findOne({ slug });
   if (!blog) {
     throw new AppError(status.NOT_FOUND, 'Blog not found!');
   }

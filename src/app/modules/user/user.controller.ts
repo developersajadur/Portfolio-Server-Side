@@ -29,8 +29,6 @@ const getAllUsers = catchAsync(async (req, res) => {
   });
 });
 
-
-
 export const userController = {
   createUserIntoDb,
   getAllUsers,

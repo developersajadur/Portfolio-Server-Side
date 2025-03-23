@@ -9,10 +9,7 @@ const createUserIntoDb = async (user: TUser) => {
   const isUserExist = await User.findOne({ email: user.email });
 
   if (isUserExist?.email === user?.email) {
-      throw new AppError(
-        status.BAD_REQUEST,
-        'User is already exists',
-      );
+    throw new AppError(status.BAD_REQUEST, 'User is already exists');
   }
 
   const result = await User.create(user);
@@ -31,7 +28,6 @@ const getAllUsers = async (query: Record<string, unknown>) => {
   const meta = await userQuery.countTotal();
   return { result, meta };
 };
-
 
 export const userService = {
   createUserIntoDb,

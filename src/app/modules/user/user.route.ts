@@ -13,6 +13,6 @@ router.post(
   validateRequest(userValidationSchema.createUserValidation),
   userController.createUserIntoDb,
 );
-router.get('/',  Auth(USER_ROLE.admin), userController.getAllUsers);
+router.get('/', Auth(USER_ROLE.admin), userController.getAllUsers);
 
 export const userRoute = router;
